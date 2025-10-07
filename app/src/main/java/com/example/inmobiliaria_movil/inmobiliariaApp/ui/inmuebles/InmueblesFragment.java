@@ -13,18 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.inmobiliaria_movil.R;
+import com.example.inmobiliaria_movil.databinding.FragmentInmueblesBinding;
 import com.example.inmobiliaria_movil.databinding.FragmentPerfilBinding;
 
 public class InmueblesFragment extends Fragment {
 
     private InmueblesViewModel vm;
-    private FragmentPerfilBinding binding;
+    private FragmentInmueblesBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmueblesViewModel.class);
-        binding = FragmentPerfilBinding.inflate(inflater, container, false);
+        binding = FragmentInmueblesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 
