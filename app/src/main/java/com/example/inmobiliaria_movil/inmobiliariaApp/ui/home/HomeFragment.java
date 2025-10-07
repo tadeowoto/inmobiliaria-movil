@@ -10,7 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.inmobiliaria_movil.R;
 import com.example.inmobiliaria_movil.databinding.FragmentHomeBinding;
+import com.google.android.gms.maps.SupportMapFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -25,6 +27,10 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        vm.getMapaActual().observe(getViewLifecycleOwner(), mapaActual -> {
+            SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapa);
+            mapFragment.getMapAsync(mapaActual);
+        });
 
         return root;
     }
