@@ -16,4 +16,5 @@
     <string name="inmuebles">Inmuebles</string>
     <string name="inquilinos">Inquilinos</string>
     <string name="perfil">Perfil</string>
+    <string name="ubicacion">Ubicacion</string>
 </resources>
