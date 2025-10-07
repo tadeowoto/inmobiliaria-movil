@@ -12,4 +12,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="salir">Salir</string>
+    <string name="contratos">Contratos</string>
+    <string name="inmuebles">Inmuebles</string>
+    <string name="inquilinos">Inquilinos</string>
+    <string name="perfil">Perfil</string>
 </resources>

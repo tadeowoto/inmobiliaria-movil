@@ -18,7 +18,21 @@
             android:title="@string/menu_slideshow" />
 
         <item
+            android:id="@+id/contratosFragment"
+            android:title="@string/contratos" />
+        <item
+            android:id="@+id/inmueblesFragment"
+            android:title="@string/inmuebles" />
+        <item
+            android:id="@+id/inquilinosFragment"
+            android:title="@string/inquilinos" />
+        <item
+            android:id="@+id/perfilFragment"
+            android:title="@string/perfil" />
+        <item
             android:id="@+id/salirFragment"
             android:title="@string/salir" />
+
+
     </group>
 </menu>
