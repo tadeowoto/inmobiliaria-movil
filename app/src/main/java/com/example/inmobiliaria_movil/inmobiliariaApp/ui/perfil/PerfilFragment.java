@@ -29,10 +29,6 @@ public class PerfilFragment extends Fragment {
         binding = FragmentPerfilBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
-        vm.getCodigo().observe(getViewLifecycleOwner(), codigo -> {
-            binding.etCodigo.setText(codigo);
-        });
         vm.getNombre().observe(getViewLifecycleOwner(), nombre -> {
             binding.etNombre.setText(nombre);
         });

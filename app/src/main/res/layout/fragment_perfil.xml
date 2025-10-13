@@ -56,15 +56,6 @@
             android:padding="16dp"
             android:dividerPadding="8dp">
 
-            <EditText
-                android:id="@+id/etCodigo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Código"
-                android:enabled="false"
-                android:textColorHint="#999999"
-                android:backgroundTint="@color/colorPrimary"
-                android:inputType="number" />
 
             <EditText
                 android:id="@+id/etDni"

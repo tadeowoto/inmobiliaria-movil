@@ -22,7 +22,6 @@ import retrofit2.Response;
 public class PerfilViewModel extends AndroidViewModel {
 
     MutableLiveData<String> mNombre = new MutableLiveData<>();
-    MutableLiveData<String> mCodigo = new MutableLiveData<>();
     MutableLiveData<String> mApellido = new MutableLiveData<>();
     MutableLiveData<String> mDni = new MutableLiveData<>();
     MutableLiveData<String> mTelefono = new MutableLiveData<>();
@@ -41,9 +40,7 @@ public class PerfilViewModel extends AndroidViewModel {
         return mNombre;
     }
 
-    public LiveData<String> getCodigo() {
-        return mCodigo;
-    }
+
 
     public LiveData<String> getApellido() {
         return mApellido;
@@ -82,7 +79,6 @@ public class PerfilViewModel extends AndroidViewModel {
             public void onResponse(Call<Propietario> call, Response<Propietario> response) {
                 if (response.isSuccessful()){
                     Propietario propietario = response.body();
-                    mCodigo.postValue(String.valueOf(propietario.getIdPropietario()));
                     mNombre.postValue(propietario.getNombre());
                     mApellido.postValue(propietario.getApellido());
                     mDni.postValue(propietario.getDni());

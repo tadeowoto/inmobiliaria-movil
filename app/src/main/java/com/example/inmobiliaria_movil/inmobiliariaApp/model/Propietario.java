@@ -10,9 +10,6 @@ public class Propietario {
     private String email;
     private String clave;
 
-    // Constructor, getters y setters
-
-
     public Propietario(int idPropietario, String nombre, String apellido, String dni, String telefono, String email, String clave) {
         this.idPropietario = idPropietario;
         this.nombre = nombre;
