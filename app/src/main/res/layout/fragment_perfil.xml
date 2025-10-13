@@ -71,6 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="DNI"
+                android:enabled="false"
                 android:textColorHint="#999999"
                 android:backgroundTint="@color/colorPrimary"
                 android:inputType="number" />
@@ -80,6 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre"
+                android:enabled="false"
                 android:textColorHint="#999999"
                 android:backgroundTint="@color/colorPrimary"
                 android:inputType="textPersonName" />
@@ -88,6 +90,7 @@
                 android:id="@+id/etApellido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="false"
                 android:hint="Apellido"
                 android:textColorHint="#999999"
                 android:backgroundTint="@color/colorPrimary"
@@ -98,6 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Correo electrónico"
+                android:enabled="false"
                 android:textColorHint="#999999"
                 android:backgroundTint="@color/colorPrimary"
                 android:inputType="textEmailAddress" />
@@ -107,6 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
+                android:enabled="false"
                 android:textColorHint="#999999"
                 android:backgroundTint="@color/colorPrimary"
                 android:inputType="textPassword" />
@@ -116,6 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Teléfono"
+                android:enabled="false"
                 android:textColorHint="#999999"
                 android:backgroundTint="@color/colorPrimary"
                 android:inputType="phone" />
