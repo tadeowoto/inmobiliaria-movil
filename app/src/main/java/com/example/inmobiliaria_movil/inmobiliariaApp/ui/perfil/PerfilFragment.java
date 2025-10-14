@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -106,8 +107,11 @@ public class PerfilFragment extends Fragment {
             binding.tvErrorMail.setVisibility(View.VISIBLE);
         });
 
+        binding.btnCambiarPassword.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_menu).navigate(R.id.action_perfilFragment_to_cambiarPasswordFragment, bundle);
 
-
+        });
 
 
 

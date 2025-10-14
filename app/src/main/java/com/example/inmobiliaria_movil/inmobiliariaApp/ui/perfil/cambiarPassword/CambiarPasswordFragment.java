@@ -29,6 +29,30 @@ public class CambiarPasswordFragment extends Fragment {
 
 
 
+        binding.btnGuardar.setOnClickListener(v -> {
+            String contraseniaActual = binding.etContraseniaActual.getText().toString();
+            String nuevaContrasenia = binding.etNuevaContrasenia.getText().toString();
+            String repeticionNuevaContrasenia = binding.etRepetirContrasenia.getText().toString();
+
+            vm.cambiarPassword(contraseniaActual, nuevaContrasenia, repeticionNuevaContrasenia);
+
+        });
+
+        vm.getErrorContraseniaActual().observe(getViewLifecycleOwner(), error -> {
+            binding.tvErrorContraseniaActual.setText(error);
+            binding.tvErrorContraseniaActual.setVisibility(View.VISIBLE);
+        });
+        vm.getErrorNuevaContrasenia().observe(getViewLifecycleOwner(), error -> {
+            binding.tvErrorNuevaContrasenia.setText(error);
+            binding.tvErrorNuevaContrasenia.setVisibility(View.VISIBLE);
+        });
+        vm.getErrorRepetirNuevaContrasenia().observe(getViewLifecycleOwner(), error -> {
+            binding.tvErrorRepetirContrasenia.setText(error);
+            binding.tvErrorRepetirContrasenia.setVisibility(View.VISIBLE);
+        });
+
+
+
         return  root;
     }
 

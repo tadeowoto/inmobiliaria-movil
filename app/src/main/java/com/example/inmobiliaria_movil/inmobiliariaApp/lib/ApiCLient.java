@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import com.example.inmobiliaria_movil.inmobiliariaApp.model.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -51,6 +52,11 @@ public class ApiCLient {
                 @Header("Authorization") String token,
                 @Body Propietario propietario
         );
+
+        @FormUrlEncoded
+        @PUT("/api/propietarios/changePassword")
+        //esto o hacer un modelo para la res de la API
+        Call<JsonObject> cambiarPassword(@Header("Authorization") String token, @Field("currentPassword") String contraseniaActual, @Field("newPassword") String nuevaContrasenia);
 
     }
 }
