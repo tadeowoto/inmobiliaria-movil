@@ -35,5 +35,18 @@
         android:id="@+id/perfilFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.perfil.PerfilFragment"
         android:label="fragment_perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/fragment_perfil" >
+        <action
+            android:id="@+id/action_perfilFragment_to_cambiarPasswordFragment"
+            app:destination="@id/cambiarPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cambiarPasswordFragment"
+        android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.perfil.cambiarPassword.CambiarPasswordFragment"
+        android:label="fragment_cambiar_password"
+        tools:layout="@layout/fragment_cambiar_password" >
+        <action
+            android:id="@+id/action_cambiarPasswordFragment_to_perfilFragment"
+            app:destination="@id/perfilFragment" />
+    </fragment>
 </navigation>
