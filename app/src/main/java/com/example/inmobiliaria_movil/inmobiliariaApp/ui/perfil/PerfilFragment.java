@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.example.inmobiliaria_movil.R;
 import com.example.inmobiliaria_movil.databinding.FragmentPerfilBinding;
+import com.example.inmobiliaria_movil.inmobiliariaApp.model.Propietario;
 
 public class PerfilFragment extends Fragment {
 
@@ -41,32 +42,70 @@ public class PerfilFragment extends Fragment {
         vm.mEmail.observe(getViewLifecycleOwner(), email -> {
             binding.etMail.setText(email);
         });
-        vm.getPassword().observe(getViewLifecycleOwner(), password -> {
-            binding.etPassword.setText(password);
-        });
         vm.getTelefono().observe(getViewLifecycleOwner(), telefono -> {
             binding.etTelefono.setText(telefono);
         });
 
-        Log.d("salida", "onCreateView: llamando al llenar formulario");
-        vm.llenarFormulario();
 
-        binding.btnEditarGuardar.setOnClickListener(v -> {
-            //todos los campos deberian estar vacios y ahora activarlos
-            binding.btnEditarGuardar.setText("Guardar");
-            binding.etNombre.setEnabled(true);
-            binding.etApellido.setEnabled(true);
-            binding.etDni.setEnabled(true);
-            binding.etMail.setEnabled(true);
-            binding.etPassword.setEnabled(true);
-            binding.etTelefono.setEnabled(true);
+        //cambia el texto del boton
+        vm.getTextoBoton().observe(getViewLifecycleOwner(), texto -> {
+            binding.btnEditarGuardar.setText(texto);
         });
 
+        //habilita los campos
+        vm.getHabilitarCampos().observe(getViewLifecycleOwner(), habilitar -> {
+            binding.etNombre.setEnabled(habilitar);
+            binding.etApellido.setEnabled(habilitar);
+            binding.etDni.setEnabled(habilitar);
+            binding.etMail.setEnabled(habilitar);
+            binding.etTelefono.setEnabled(habilitar);
+        });
+
+
+        //guarda los cambios
+        vm.getGuardarPropietario().observe(getViewLifecycleOwner(), guardar -> {
+                String nombre = binding.etNombre.getText().toString();
+                String apellido = binding.etApellido.getText().toString();
+                String dni = binding.etDni.getText().toString();
+                String telefono = binding.etTelefono.getText().toString();
+                String email = binding.etMail.getText().toString();
+                vm.guardarPropietario(nombre, apellido, dni, telefono, email);
+        });
+
+        binding.btnEditarGuardar.setOnClickListener(v -> {
+            vm.procesarBoton(binding.btnEditarGuardar.getText().toString());
+        });
+
+        vm.getErrorNombre().observe(getViewLifecycleOwner(), error -> {
+            binding.tvErrorNombre.setText(error);
+            binding.tvErrorNombre.setVisibility(View.VISIBLE);
+        });
+        vm.getErrorApellido().observe(getViewLifecycleOwner(), error -> {
+            binding.tvErrorApellido.setText(error);
+            binding.tvErrorApellido.setVisibility(View.VISIBLE);
+        });
+        vm.getErrorDni().observe(getViewLifecycleOwner(), error -> {
+            binding.tvErrorDni.setText(error);
+            binding.tvErrorDni.setVisibility(View.VISIBLE);
+        });
+        vm.getErrorTelefono().observe(getViewLifecycleOwner(), error -> {
+            binding.tvErrorTelefono.setText(error);
+            binding.tvErrorTelefono.setVisibility(View.VISIBLE);
+        });
+        vm.getErrorEmail().observe(getViewLifecycleOwner(), error -> {
+            binding.tvErrorMail.setText(error);
+            binding.tvErrorMail.setVisibility(View.VISIBLE);
+        });
+
+
+
+
+
+
+
+
+        vm.llenarFormulario();
         return root;
 
-
     }
-
-
-
 }

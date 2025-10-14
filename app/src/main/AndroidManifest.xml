@@ -14,9 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Inmobiliariamovil" >
 
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="xxx"
-            />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value= "APIKEY"/>
 
         <activity
             android:name=".inmobiliariaApp.MenuActivity"

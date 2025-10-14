@@ -23,6 +23,7 @@ public class HomeViewModel extends AndroidViewModel {
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
+        mapaActual.setValue(new MapaActual());
     }
 
     public LiveData<MapaActual> getMapaActual() {
