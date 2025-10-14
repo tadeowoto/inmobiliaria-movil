@@ -3,10 +3,13 @@ package com.example.inmobiliaria_movil.inmobiliariaApp.lib;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.inmobiliaria_movil.inmobiliariaApp.model.Inmueble;
 import com.example.inmobiliaria_movil.inmobiliariaApp.model.Propietario;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -57,6 +60,11 @@ public class ApiCLient {
         @PUT("/api/propietarios/changePassword")
         //esto o hacer un modelo para la res de la API
         Call<JsonObject> cambiarPassword(@Header("Authorization") String token, @Field("currentPassword") String contraseniaActual, @Field("newPassword") String nuevaContrasenia);
+
+
+        @GET("api/inmuebles")
+        Call<List<Inmueble>> obtenerInmuebles(@Header("Authorization") String token);
+
 
     }
 }

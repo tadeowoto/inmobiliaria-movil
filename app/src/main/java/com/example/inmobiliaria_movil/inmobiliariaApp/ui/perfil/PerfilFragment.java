@@ -47,12 +47,7 @@ public class PerfilFragment extends Fragment {
             binding.etTelefono.setText(telefono);
         });
         vm.getEstaCargando().observe(getViewLifecycleOwner(), estaCargando -> {
-            // preguntar sobre esto si puede estar (SOLO MODIFICA UI, No es logica)
-            if (estaCargando) {
-                binding.loaderPerfil.setVisibility(View.VISIBLE);
-            } else {
-                binding.loaderPerfil.setVisibility(View.GONE);
-            }
+            binding.loaderPerfil.setVisibility(estaCargando ? View.VISIBLE : View.GONE);
         });
 
 
