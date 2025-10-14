@@ -21,6 +21,9 @@ public class LoginActivityViewModel extends AndroidViewModel {
     private MutableLiveData<String> mErrorNombre = new MutableLiveData<>();
     private MutableLiveData<String> mErrorPassword = new MutableLiveData<>();
     private MutableLiveData<Boolean> mLoginExitoso = new MutableLiveData<>();
+
+    private MutableLiveData<Boolean> mEstaCargando = new MutableLiveData<>();
+
     private Context context;
 
 
@@ -38,6 +41,10 @@ public class LoginActivityViewModel extends AndroidViewModel {
         return mErrorPassword;
     }
 
+    public LiveData<Boolean> getEstaCargando() {
+        return mEstaCargando;
+    }
+
     public LiveData<Boolean> getLoginExitoso() {
         return mLoginExitoso;
     }
@@ -49,8 +56,14 @@ public class LoginActivityViewModel extends AndroidViewModel {
     public void validarUsuario(String usuario, String password) {
         boolean valido = true;
 
+
         mErrorNombre.setValue(null);
         mErrorPassword.setValue(null);
+
+        if (!valido) {
+            mEstaCargando.setValue(false);
+            return;
+        }
 
         if (usuario == null || usuario.trim().isEmpty()) {
             mErrorNombre.setValue("Ingrese un usuario");
@@ -63,6 +76,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
         }
 
         if (valido) {
+            mEstaCargando.setValue(true);
             ApiCLient.inmobiliariaService service = ApiCLient.getService();
             Call<String> call = service.login(usuario, password);
 
@@ -73,13 +87,16 @@ public class LoginActivityViewModel extends AndroidViewModel {
                         String token = response.body();
                         Services.guardarToken(context, token);
                         mLoginExitoso.postValue(true);
+                        mEstaCargando.postValue(false);
                     } else {
                         mErrorPassword.postValue("Usuario o contraseña incorrectos");
+                        mEstaCargando.postValue(false);
                     }
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
+                    mEstaCargando.postValue(false);
                     Toast.makeText(context, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });

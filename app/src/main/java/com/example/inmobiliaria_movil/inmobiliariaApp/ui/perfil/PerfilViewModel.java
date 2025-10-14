@@ -41,6 +41,9 @@ public class PerfilViewModel extends AndroidViewModel {
     MutableLiveData<String> mErrorTelefono = new MutableLiveData<>();
     MutableLiveData<String> mErrorEmail = new MutableLiveData<>();
 
+    MutableLiveData<Boolean> mEstaCargando = new MutableLiveData<>();
+
+
 
 
 
@@ -59,6 +62,11 @@ public class PerfilViewModel extends AndroidViewModel {
     public LiveData<Boolean> getHabilitarCampos() {
         return mHabilitarCampos;
     }
+
+    public LiveData<Boolean> getEstaCargando() {
+        return mEstaCargando;
+    }
+
 
 
 
@@ -150,6 +158,7 @@ public class PerfilViewModel extends AndroidViewModel {
 
         boolean valido = true;
 
+
         if (nombre == null || nombre.trim().isEmpty()) {
             mErrorNombre.setValue("Ingrese un nombre");
             valido = false;
@@ -183,6 +192,7 @@ public class PerfilViewModel extends AndroidViewModel {
 
     public void llenarFormulario() {
         String token = Services.leerToken(context);
+        mEstaCargando.setValue(true);
 
         ApiCLient.inmobiliariaService service = ApiCLient.getService();
         Call<Propietario> call = service.obtenerPropietario("Bearer " + token);
@@ -190,19 +200,23 @@ public class PerfilViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<Propietario> call, Response<Propietario> response) {
                 if (response.isSuccessful()){
+
                     propietarioActual = response.body();
                     mNombre.postValue(propietarioActual.getNombre());
                     mApellido.postValue(propietarioActual.getApellido());
                     mDni.postValue(propietarioActual.getDni());
                     mTelefono.postValue(propietarioActual.getTelefono());
                     mEmail.postValue(propietarioActual.getEmail());
+                    mEstaCargando.setValue(false);
                 }else{
+                    mEstaCargando.setValue(false);
                     Log.d("salida", "onResponse: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<Propietario> call, Throwable t) {
+                mEstaCargando.setValue(false);
                 Toast.makeText(context, "Error llenando el formulario: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

@@ -42,6 +42,10 @@ public class LoginActivity extends AppCompatActivity {
             binding.tvErrorPassword.setText(error);
             binding.tvErrorPassword.setVisibility(View.VISIBLE);
         });
+        vm.getEstaCargando().observe(this, estaCargando -> {
+            binding.loader.setVisibility(estaCargando ? View.VISIBLE : View.GONE);
+        });
+
 
         vm.getLoginExitoso().observe(this, loginExitoso -> {
             //inicializar intent para llevar al menu
