@@ -8,42 +8,43 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Ubicación"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/salirFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.Salir.SalirFragment"
-        android:label="fragment_salir"
+        android:label="Salir"
         tools:layout="@layout/fragment_salir" />
     <fragment
         android:id="@+id/contratosFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.contratos.ContratosFragment"
-        android:label="fragment_contratos"
+        android:label="Contratos"
         tools:layout="@layout/fragment_contratos" />
     <fragment
         android:id="@+id/inmueblesFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.inmuebles.InmueblesFragment"
-        android:label="fragment_inmuebles"
+        android:label="Inmuebles"
         tools:layout="@layout/fragment_inmuebles" />
     <fragment
         android:id="@+id/inquilinosFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.inquilinos.InquilinosFragment"
-        android:label="fragment_inquilinos"
+        android:label="Inquilinos"
         tools:layout="@layout/fragment_inquilinos" />
     <fragment
         android:id="@+id/perfilFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.perfil.PerfilFragment"
-        android:label="fragment_perfil"
+        android:label="Perfil"
         tools:layout="@layout/fragment_perfil" >
         <action
             android:id="@+id/action_perfilFragment_to_cambiarPasswordFragment"
-            app:destination="@id/cambiarPasswordFragment" />
+            app:destination="@id/cambiarPasswordFragment"
+            />
     </fragment>
     <fragment
         android:id="@+id/cambiarPasswordFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.perfil.cambiarPassword.CambiarPasswordFragment"
-        android:label="fragment_cambiar_password"
+        android:label="Cambiar contraseña"
         tools:layout="@layout/fragment_cambiar_password" >
         <action
             android:id="@+id/action_cambiarPasswordFragment_to_perfilFragment"
