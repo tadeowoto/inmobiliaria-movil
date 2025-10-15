@@ -59,7 +59,6 @@
             android:textAllCaps="false"
             style="?attr/materialButtonOutlinedStyle"
             app:cornerRadius="16dp"
-            app:icon="@drawable/ic_arrow_forward"
             app:iconGravity="textEnd"
             app:iconPadding="8dp"
             app:iconTint="?attr/colorPrimary"

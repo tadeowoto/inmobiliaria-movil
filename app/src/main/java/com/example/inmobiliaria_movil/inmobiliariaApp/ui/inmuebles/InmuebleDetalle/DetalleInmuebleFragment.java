@@ -12,27 +12,50 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.example.inmobiliaria_movil.R;
+import com.example.inmobiliaria_movil.databinding.FragmentDetalleInmuebleBinding;
+import com.example.inmobiliaria_movil.inmobiliariaApp.model.Inmueble;
 
 public class DetalleInmuebleFragment extends Fragment {
 
-    private DetalleInmuebleViewModel mViewModel;
+    private DetalleInmuebleViewModel vm;
+    private FragmentDetalleInmuebleBinding binding;
 
-    public static DetalleInmuebleFragment newInstance() {
-        return new DetalleInmuebleFragment();
-    }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_detalle_inmueble, container, false);
-    }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(DetalleInmuebleViewModel.class);
-        // TODO: Use the ViewModel
+        vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(DetalleInmuebleViewModel.class);
+        binding = FragmentDetalleInmuebleBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+
+        Inmueble inmueble = (Inmueble) getArguments().getSerializable("inmueble");
+
+        vm.cargarInmueble(inmueble);
+
+        vm.getInmueble().observe(getViewLifecycleOwner(), inmueble1 -> {
+
+            binding.tvCodigo.setText(String.valueOf(inmueble1.getIdInmueble()));
+            binding.tvAmbientes.setText(String.valueOf(inmueble1.getAmbientes()));
+            binding.tvDireccion.setText(inmueble1.getDireccion());
+            binding.tvPrecio.setText(String.valueOf(inmueble1.getValor()));
+            binding.tvTipo.setText(inmueble1.getTipo());
+            binding.tvUso.setText(inmueble1.getUso());
+            binding.cbDisponible.setChecked(inmueble1.isDisponible());
+
+            String imageUrl = inmueble1.getImagen().replace("\\", "/");
+            String fullUrl = "https://inmobiliariaulp-amb5hwfqaraweyga.canadacentral-01.azurewebsites.net/" + imageUrl;
+
+            Glide.with(getContext())
+                    .load(fullUrl)
+                    .into(binding.imgInmuebleDetalle);
+
+
+        });
+
+        return root;
     }
 
 }
