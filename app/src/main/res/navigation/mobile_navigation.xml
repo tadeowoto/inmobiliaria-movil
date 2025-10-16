@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_inmueblesFragment_to_detalleInmuebleFragment"
             app:destination="@id/detalleInmuebleFragment" />
+        <action
+            android:id="@+id/action_inmueblesFragment_to_agregarInmuebleFragment"
+            app:destination="@id/agregarInmuebleFragment" />
     </fragment>
     <fragment
         android:id="@+id/inquilinosFragment"
@@ -60,6 +63,15 @@
         android:label="DetalleInmuebleFragment" >
         <action
             android:id="@+id/action_detalleInmuebleFragment_to_inmueblesFragment"
+            app:destination="@id/inmueblesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarInmuebleFragment"
+        android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.inmuebles.AgregarInmueble.AgregarInmuebleFragment"
+        android:label="fragment_agregar_inmueble"
+        tools:layout="@layout/fragment_agregar_inmueble" >
+        <action
+            android:id="@+id/action_agregarInmuebleFragment_to_inmueblesFragment"
             app:destination="@id/inmueblesFragment" />
     </fragment>
 </navigation>

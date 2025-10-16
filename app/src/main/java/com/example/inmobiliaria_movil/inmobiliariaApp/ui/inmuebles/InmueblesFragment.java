@@ -48,6 +48,10 @@ public class InmueblesFragment extends Fragment {
 
         vm.cargarInmuebles();
 
+        binding.btnAgregar.setOnClickListener(v -> {
+            Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_menu).navigate(R.id.action_inmueblesFragment_to_agregarInmuebleFragment);
+        });
+
         return root;
 
     }

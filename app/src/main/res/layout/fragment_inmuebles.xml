@@ -21,7 +21,7 @@
         tools:listitem="@layout/card_inmueble" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fabAdd"
+        android:id="@+id/btnAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/agregar_inmueble"
