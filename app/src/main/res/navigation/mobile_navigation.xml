@@ -20,7 +20,11 @@
         android:id="@+id/contratosFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.contratos.ContratosFragment"
         android:label="Contratos"
-        tools:layout="@layout/fragment_contratos" />
+        tools:layout="@layout/fragment_contratos" >
+        <action
+            android:id="@+id/action_contratosFragment_to_detalleContratoFragment"
+            app:destination="@id/detalleContratoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/inmueblesFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.inmuebles.InmueblesFragment"
@@ -73,5 +77,14 @@
         <action
             android:id="@+id/action_agregarInmuebleFragment_to_inmueblesFragment"
             app:destination="@id/inmueblesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleContratoFragment"
+        android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.contratos.detalleContrato.DetalleContratoFragment"
+        android:label="fragment_detalle_contrato"
+        tools:layout="@layout/fragment_detalle_contrato" >
+        <action
+            android:id="@+id/action_detalleContratoFragment_to_contratosFragment"
+            app:destination="@id/contratosFragment" />
     </fragment>
 </navigation>
