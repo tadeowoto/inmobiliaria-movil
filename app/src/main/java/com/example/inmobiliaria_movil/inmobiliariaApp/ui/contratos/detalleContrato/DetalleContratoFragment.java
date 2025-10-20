@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,9 +38,6 @@ public class DetalleContratoFragment extends Fragment {
         vm.cargarContrato(idInmueble);
 
         vm.getContrato().observe(getViewLifecycleOwner(), contrato -> {
-            if (contrato == null) return;
-
-
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
             NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("es", "AR"));
 
@@ -73,7 +71,15 @@ public class DetalleContratoFragment extends Fragment {
             Glide.with(getContext())
                     .load(fullUrl)
                     .into(binding.imgInmuebleContrato);
+
+            binding.btnVerPagos.setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putInt("idContrato", contrato.getIdContrato());
+                Navigation.findNavController(v).navigate(R.id.action_detalleContratoFragment_to_pagosContratoFragment, bundle);
+            });
         });
+
+
 
         return root;
     }

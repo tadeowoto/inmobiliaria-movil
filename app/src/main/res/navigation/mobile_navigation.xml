@@ -64,7 +64,7 @@
     <fragment
         android:id="@+id/detalleInmuebleFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.inmuebles.InmuebleDetalle.DetalleInmuebleFragment"
-        android:label="DetalleInmuebleFragment" >
+        android:label="Detalle del Inmueble" >
         <action
             android:id="@+id/action_detalleInmuebleFragment_to_inmueblesFragment"
             app:destination="@id/inmueblesFragment" />
@@ -72,7 +72,7 @@
     <fragment
         android:id="@+id/agregarInmuebleFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.inmuebles.AgregarInmueble.AgregarInmuebleFragment"
-        android:label="fragment_agregar_inmueble"
+        android:label="Agregar un Inmueble"
         tools:layout="@layout/fragment_agregar_inmueble" >
         <action
             android:id="@+id/action_agregarInmuebleFragment_to_inmueblesFragment"
@@ -81,10 +81,22 @@
     <fragment
         android:id="@+id/detalleContratoFragment"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.contratos.detalleContrato.DetalleContratoFragment"
-        android:label="fragment_detalle_contrato"
+        android:label="Detalle del Contrato"
         tools:layout="@layout/fragment_detalle_contrato" >
         <action
             android:id="@+id/action_detalleContratoFragment_to_contratosFragment"
             app:destination="@id/contratosFragment" />
+        <action
+            android:id="@+id/action_detalleContratoFragment_to_pagosContratoFragment"
+            app:destination="@id/pagosContratoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pagosContratoFragment"
+        android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.contratos.pagosContrato.PagosContratoFragment"
+        android:label="Pagos del Contrato"
+        tools:layout="@layout/fragment_pagos_contrato" >
+        <action
+            android:id="@+id/action_pagosContratoFragment_to_detalleContratoFragment"
+            app:destination="@id/detalleContratoFragment" />
     </fragment>
 </navigation>
