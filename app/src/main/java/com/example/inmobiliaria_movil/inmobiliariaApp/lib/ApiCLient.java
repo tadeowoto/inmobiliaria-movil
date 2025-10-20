@@ -3,6 +3,7 @@ package com.example.inmobiliaria_movil.inmobiliariaApp.lib;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.inmobiliaria_movil.inmobiliariaApp.model.Contrato;
 import com.example.inmobiliaria_movil.inmobiliariaApp.model.Inmueble;
 import com.example.inmobiliaria_movil.inmobiliariaApp.model.Propietario;
 import com.google.gson.Gson;
@@ -21,6 +22,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public class ApiCLient {
 
@@ -67,6 +69,9 @@ public class ApiCLient {
 
         @GET("/api/Inmuebles/GetContratoVigente")
         Call<List<Inmueble>> obtenerInmueblesConContratosVigentes(@Header("Authorization") String token);
+
+        @GET("/api/contratos/inmueble/{idInmueble}")
+        Call<Contrato> obtenerContratoPorInmueble(@Header("Authorization") String token, @Path("idInmueble") int idInmueble);
 
 
 

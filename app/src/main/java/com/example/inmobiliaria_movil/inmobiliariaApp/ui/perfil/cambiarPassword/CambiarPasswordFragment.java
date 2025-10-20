@@ -29,7 +29,7 @@ public class CambiarPasswordFragment extends Fragment {
 
 
 
-        binding.btnGuardar.setOnClickListener(v -> {
+        binding.btnGuardarInmueble.setOnClickListener(v -> {
             String contraseniaActual = binding.etContraseniaActual.getText().toString();
             String nuevaContrasenia = binding.etNuevaContrasenia.getText().toString();
             String repeticionNuevaContrasenia = binding.etRepetirContrasenia.getText().toString();

@@ -1,13 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".inmobiliariaApp.ui.contratos.detalleContrato.DetalleContratoFragment">
+    android:padding="16dp"
+    android:background="?attr/colorSurface">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-</FrameLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            android:layout_marginBottom="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgInmuebleContrato"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Imagen del inmueble" />
+
+                <TextView
+                    android:id="@+id/tvDireccionInmueble"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#AA000000"
+                    android:text="Colón 323"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:padding="12dp"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="Contrato"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvFechaInicio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Inicio: 2025-08-01"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/tvFechaFin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Finalización: 2028-08-01" />
+
+                <TextView
+                    android:id="@+id/tvMonto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Monto mensual: $23.00"
+                    android:layout_marginTop="4dp" />
+
+                <TextView
+                    android:id="@+id/tvEstadoContrato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Estado: Activo"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="16dp">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp"
+                android:layout_marginEnd="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:text="Inquilino"
+                        android:textAppearance="?attr/textAppearanceTitleSmall"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/tvNombreInquilino"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pepe Funes"
+                        android:layout_marginTop="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvDniInquilino"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="DNI: 12345" />
+
+                    <TextView
+                        android:id="@+id/tvTelefonoInquilino"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Teléfono: 987653343" />
+
+                    <TextView
+                        android:id="@+id/tvEmailInquilino"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Email: ale@gmail.com" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="3dp"
+                android:layout_marginStart="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Inmueble"
+                        android:textAppearance="?attr/textAppearanceTitleSmall"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/tvTipoInmueble"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tipo: Casa"
+                        android:layout_marginTop="8dp" />
+
+                    <TextView
+                        android:id="@+id/tvUsoInmueble"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Uso: Residencial" />
+
+                    <TextView
+                        android:id="@+id/tvAmbientesInmueble"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ambientes: 2" />
+
+                    <TextView
+                        android:id="@+id/tvValorInmueble"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Valor: $350000" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerPagos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver Pagos"
+            android:textAllCaps="false"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="?attr/colorPrimary"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</ScrollView>

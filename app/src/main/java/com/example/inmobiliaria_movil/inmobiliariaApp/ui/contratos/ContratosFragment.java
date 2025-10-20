@@ -47,6 +47,7 @@ public class ContratosFragment extends Fragment {
 
 
         });
+        vm.cargarContratos();
 
         return root;
     }
