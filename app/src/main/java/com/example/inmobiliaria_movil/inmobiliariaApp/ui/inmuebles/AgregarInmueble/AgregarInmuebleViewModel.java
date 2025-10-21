@@ -8,6 +8,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.inmobiliaria_movil.inmobiliariaApp.lib.ApiCLient;
+import com.example.inmobiliaria_movil.inmobiliariaApp.lib.Services;
+import com.example.inmobiliaria_movil.inmobiliariaApp.model.Inmueble;
+
 public class AgregarInmuebleViewModel extends AndroidViewModel {
 
     private MutableLiveData<String> mErrorDireccion = new MutableLiveData<>();
@@ -101,7 +105,9 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
         boolean valido = validarCampos(direccion, amb, uso, tipo, sup, val);
 
         if(valido){
-            //llamar a la api de agregar inmueble
+            String token = Services.leerToken(getApplication());
+            ApiCLient.inmobiliariaService service = ApiCLient.getService();
+
         }
 
 

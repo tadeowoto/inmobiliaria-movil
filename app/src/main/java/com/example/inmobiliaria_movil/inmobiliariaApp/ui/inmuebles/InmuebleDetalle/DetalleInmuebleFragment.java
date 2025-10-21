@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.inmobiliaria_movil.R;
 import com.example.inmobiliaria_movil.databinding.FragmentDetalleInmuebleBinding;
 import com.example.inmobiliaria_movil.inmobiliariaApp.model.Inmueble;
+import com.google.android.material.snackbar.Snackbar;
 
 public class DetalleInmuebleFragment extends Fragment {
 
@@ -53,6 +55,15 @@ public class DetalleInmuebleFragment extends Fragment {
                     .into(binding.imgInmuebleDetalle);
 
 
+            binding.cbDisponible.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                Log.d("salida", "Llamada a el cambiar estado " + String.valueOf(isChecked) );
+                vm.cambiarEstado(inmueble1);
+            });
+
+        });
+
+        vm.getMensaje().observe(getViewLifecycleOwner(), mensaje -> {
+            Snackbar.make(binding.getRoot(), mensaje, Snackbar.LENGTH_SHORT).show();
         });
 
         return root;

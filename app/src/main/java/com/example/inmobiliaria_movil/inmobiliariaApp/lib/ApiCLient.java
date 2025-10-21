@@ -79,5 +79,12 @@ public class ApiCLient {
         Call<List<Pago>> obtenerPagosPorContrato(@Header("Authorization") String token, @Path("idContrato") int idContrato);
 
 
+        @PUT("/api/Inmuebles/actualizar")
+        Call<Inmueble> actualizarInmueble(@Header("Authorization") String token, @Body Inmueble inmueble);
+
+
+
+
+
     }
 }
