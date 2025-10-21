@@ -1,6 +1,8 @@
 package com.example.inmobiliaria_movil.inmobiliariaApp.model;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -23,13 +26,12 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
     private Context context;
     private LayoutInflater li;
 
-    private OnInmuebleClickListener listener;
 
-    public InmuebleAdapter(List<Inmueble> lista, Context context, LayoutInflater li, OnInmuebleClickListener listener) {
+
+    public InmuebleAdapter(List<Inmueble> lista, Context context, LayoutInflater li) {
         this.lista = lista;
         this.context = context;
         this.li = li;
-        this.listener = listener;
     }
 
 
@@ -48,9 +50,13 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
         holder.direccion.setText(ia.getDireccion());
         holder.valor.setText(String.valueOf(ia.getValor()));
         holder.btnVer.setOnClickListener(v -> {
-            if ( listener != null) {
-                listener.onInmuebleClick(ia);
-            }
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("inmueble", ia);
+                //Navigation.findNavController((Activity) v.getContext(), R.id.nav_host_fragment_content_menu).navigate(R.id.action_inmueblesFragment_to_detalleInmuebleFragment, bundle);
+            // Se puede hacer un callback como interfaz, PREGUNTAR AL PROFE
+                Navigation.findNavController(v)
+                    .navigate(R.id.action_inmueblesFragment_to_detalleInmuebleFragment, bundle);
+
         });
 
         String imageUrl = ia.getImagen().replace("\\", "/");
@@ -80,9 +86,6 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
         }
     }
 
-    public interface OnInmuebleClickListener {
-        void onInmuebleClick(Inmueble inmueble);
-    }
 }
 
 

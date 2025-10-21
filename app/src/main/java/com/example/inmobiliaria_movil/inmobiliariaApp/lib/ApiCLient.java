@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.example.inmobiliaria_movil.inmobiliariaApp.model.Contrato;
 import com.example.inmobiliaria_movil.inmobiliariaApp.model.Inmueble;
+import com.example.inmobiliaria_movil.inmobiliariaApp.model.InmuebleRequest;
 import com.example.inmobiliaria_movil.inmobiliariaApp.model.Pago;
 import com.example.inmobiliaria_movil.inmobiliariaApp.model.Propietario;
 import com.google.gson.Gson;
@@ -80,7 +81,7 @@ public class ApiCLient {
 
 
         @PUT("/api/Inmuebles/actualizar")
-        Call<Inmueble> actualizarInmueble(@Header("Authorization") String token, @Body Inmueble inmueble);
+        Call<Inmueble> actualizarInmueble(@Header("Authorization") String token, @Body InmuebleRequest inmueble);
 
 
 

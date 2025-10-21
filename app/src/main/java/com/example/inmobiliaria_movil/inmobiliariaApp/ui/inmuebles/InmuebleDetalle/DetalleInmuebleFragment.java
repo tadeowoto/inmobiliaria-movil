@@ -55,11 +55,12 @@ public class DetalleInmuebleFragment extends Fragment {
                     .into(binding.imgInmuebleDetalle);
 
 
-            binding.cbDisponible.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                Log.d("salida", "Llamada a el cambiar estado " + String.valueOf(isChecked) );
-                vm.cambiarEstado(inmueble1);
-            });
 
+
+        });
+        binding.cbDisponible.setOnClickListener( v -> {
+            boolean disponible = binding.cbDisponible.isChecked();
+            vm.cambiarEstado(disponible);
         });
 
         vm.getMensaje().observe(getViewLifecycleOwner(), mensaje -> {

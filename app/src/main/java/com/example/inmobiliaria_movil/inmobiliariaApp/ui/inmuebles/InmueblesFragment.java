@@ -33,16 +33,11 @@ public class InmueblesFragment extends Fragment {
         View root = binding.getRoot();
 
 
-        vm.getListado().observe(getViewLifecycleOwner(), listado -> {
-            InmuebleAdapter ia = new InmuebleAdapter(listado, getContext(), getLayoutInflater(), inmueble -> {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("inmueble", inmueble);
-                Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_menu).navigate(R.id.action_inmueblesFragment_to_detalleInmuebleFragment, bundle);
-            });
-
+        vm.getListado().observe(getViewLifecycleOwner(), lista -> {
+            InmuebleAdapter adapter = new InmuebleAdapter(lista, getContext(), getLayoutInflater());
             GridLayoutManager glm = new GridLayoutManager(getContext(), 1, GridLayoutManager.VERTICAL, false);
             binding.lista.setLayoutManager(glm);
-            binding.lista.setAdapter(ia);
+            binding.lista.setAdapter(adapter);
         });
 
 

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.inmobiliaria_movil.inmobiliariaApp.lib.ApiCLient;
 import com.example.inmobiliaria_movil.inmobiliariaApp.lib.Services;
 import com.example.inmobiliaria_movil.inmobiliariaApp.model.Inmueble;
+import com.example.inmobiliaria_movil.inmobiliariaApp.model.InmuebleRequest;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,45 +46,28 @@ public class DetalleInmuebleViewModel extends AndroidViewModel {
     }
 
 
-    public void cambiarEstado(Inmueble i) {
+    public void cambiarEstado(boolean disponible) {
+
+        InmuebleRequest inmuebleActualizado = new InmuebleRequest(mInmueble.getValue().getIdInmueble(), disponible);
+        //PREGUNTAR, tuve que hacer un modelo con el tipo de objeto que recibe la request porque GSON no me esta detectando que los otros campos son nulos.
+
         String token = Services.leerToken(getApplication());
         ApiCLient.inmobiliariaService service = ApiCLient.getService();
-
-        Inmueble inmuebleActualizado = new Inmueble();
-        inmuebleActualizado.setIdInmueble(i.getIdInmueble());
-        inmuebleActualizado.setDireccion(i.getDireccion());
-        inmuebleActualizado.setValor(i.getValor());
-        inmuebleActualizado.setIdPropietario(i.getIdPropietario());
-        inmuebleActualizado.setUso(i.getUso());
-        inmuebleActualizado.setTipo(i.getTipo());
-        inmuebleActualizado.setAmbientes(i.getAmbientes());
-        inmuebleActualizado.setSuperficie((int) i.getSuperficie());
-        inmuebleActualizado.setLatitud(i.getLatitud());
-        inmuebleActualizado.setLongitud(i.getLongitud());
-        inmuebleActualizado.setImagen(i.getImagen());
-        inmuebleActualizado.setDisponible(!i.isDisponible());
-        inmuebleActualizado.setTieneContratoVigente(i.isTieneContratoVigente());
         Call<Inmueble> call = service.actualizarInmueble("Bearer " + token, inmuebleActualizado);
 
         call.enqueue(new Callback<Inmueble>() {
             @Override
             public void onResponse(Call<Inmueble> call, Response<Inmueble> response) {
-                if (response.isSuccessful()) {
-                    mensaje.postValue("Estado actualizado correctamente");
-                } else {
-                    try {
-                        String errorBody = response.errorBody() != null ? response.errorBody().string() : "sin detalle";
-                        Log.e("API_ERROR", "Error al actualizar: " + response.code() + " - " + errorBody);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    mensaje.postValue("Error al actualizar el estado (" + response.code() + ")");
+                if (response.isSuccessful()){
+                    mensaje.postValue("Estado actualizado");
+                }else{
+                    mensaje.postValue("Error al actualizar estado " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<Inmueble> call, Throwable t) {
-                Toast.makeText(getApplication(), "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                mensaje.postValue("Error al contactar al servidor");
             }
         });
     }
