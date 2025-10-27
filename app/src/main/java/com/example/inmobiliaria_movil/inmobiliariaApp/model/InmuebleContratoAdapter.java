@@ -73,9 +73,7 @@ public class InmuebleContratoAdapter extends RecyclerView.Adapter<InmuebleContra
             btnVerContrato = itemView.findViewById(R.id.btnVerContrato);
         }
     }
-
-    //TODO --> preguntarle al profe
-    //PARA NO CREAR OTRO ADAPTER IMPLEMENTE ESTE INTERFAZ, ENTONCES LE SETEO EL CALLBACK AL BOTON, Y QUE CADA FRAGMENT LO IMPLEMENTE COMO QUIERA (INQUILINOS Y CONTRATOS)
+    
     public interface OnInmuebleClickListener {
         void onInmuebleClick(Inmueble inmueble);
     }

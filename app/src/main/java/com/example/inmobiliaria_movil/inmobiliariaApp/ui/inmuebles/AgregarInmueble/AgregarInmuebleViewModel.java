@@ -21,6 +21,10 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
     private MutableLiveData<String> mErrorSuperficie = new MutableLiveData<>();
     private MutableLiveData<String> mErrorValor = new MutableLiveData<>();
     private MutableLiveData<Boolean> estaCargando = new MutableLiveData<>();
+    private MutableLiveData<String> mErrorLatitud = new MutableLiveData<>();
+    private MutableLiveData<String> mErrorLongitud = new MutableLiveData<>();
+
+
 
 
 
@@ -45,6 +49,12 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
     public LiveData<String> getErrorValor() {
         return mErrorValor;
     }
+    public LiveData<String> getErrorLatitud() {
+        return mErrorLatitud;
+    }
+    public LiveData<String> getErrorLongitud() {
+        return mErrorLongitud;
+    }
     public LiveData<Boolean> getEstaCargando() {
         return estaCargando;
     }
@@ -57,7 +67,7 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
 
 
 
-    public boolean validarCampos(String direccion, int ambientes, String uso, String tipo, Double superficie, Double valor){
+    public boolean validarCampos(String direccion, int ambientes, String uso, String tipo, int superficie, Double valor, Double lat, Double lon){
 
         boolean valido = true;
 
@@ -92,17 +102,29 @@ public class AgregarInmuebleViewModel extends AndroidViewModel {
             mErrorValor.postValue("Debe ser mayor a 0");
             valido = false;
         }
+        if(lat == 0){
+            mErrorLatitud.postValue("La latitud es requerida");
+            valido = false;
+        }
+        if(lon == 0){
+            mErrorLongitud.postValue("La longitud es requerida");
+            valido = false;
+        }
+
 
         return valido;
     }
 
 
-    public void AgregarInmueble(String direccion, String ambientes, String uso, String tipo, String superficie, String valor){
+    public void AgregarInmueble(String direccion, String ambientes, String uso, String tipo, String superficie, String valor, String lat, String lon){
         Integer amb = Integer.parseInt(ambientes);
-        Double sup = Double.parseDouble(superficie);
+        Integer sup = Integer.parseInt(superficie);
         Double val = Double.parseDouble(valor);
+        Double latitud = Double.parseDouble(lat);
+        Double longitud = Double.parseDouble(lon);
 
-        boolean valido = validarCampos(direccion, amb, uso, tipo, sup, val);
+
+        boolean valido = validarCampos(direccion, amb, uso, tipo, sup, val, latitud, longitud);
 
         if(valido){
             String token = Services.leerToken(getApplication());

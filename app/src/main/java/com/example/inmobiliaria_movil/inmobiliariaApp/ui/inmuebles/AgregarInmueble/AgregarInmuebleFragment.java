@@ -36,7 +36,10 @@ public class AgregarInmuebleFragment extends Fragment {
             String tipo = binding.etTipo.getText().toString();
             String superficie = binding.etSuperficie.getText().toString();
             String valor = binding.etValor.getText().toString();
+            String lat = binding.etLatitud.getText().toString();
+            String lon = binding.etLongitud.getText().toString();
 
+            vm.AgregarInmueble(direccion, ambientes, uso, tipo, superficie, valor, lat, lon );
 
 
 
