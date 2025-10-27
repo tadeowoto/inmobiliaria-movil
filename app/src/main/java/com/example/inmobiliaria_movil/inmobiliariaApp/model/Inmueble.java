@@ -124,6 +124,20 @@ public class Inmueble implements Serializable {
 
     public Inmueble() {}
 
+    public Inmueble (String direccion, String uso, String tipo, int ambientes, int superficie, double latitud, double valor, boolean disponible, double longitud) {
+
+        this.direccion = direccion;
+        this.uso = uso;
+        this.tipo = tipo;
+        this.ambientes = ambientes;
+        this.superficie = superficie;
+        this.latitud = latitud;
+        this.valor = valor;
+        this.disponible = disponible;
+        this.longitud = longitud;
+
+    }
+
     public Inmueble(int ambientes, double valor, String uso, String tipo, boolean tieneContratoVigente, int superficie, double longitud, double latitud, String imagen, int idPropietario, int idInmueble, Propietario duenio, boolean disponible, String direccion) {
         this.ambientes = ambientes;
         this.valor = valor;
