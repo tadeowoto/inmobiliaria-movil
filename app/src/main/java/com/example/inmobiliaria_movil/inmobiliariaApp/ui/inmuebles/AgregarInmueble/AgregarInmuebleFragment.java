@@ -27,6 +27,26 @@ public class AgregarInmuebleFragment extends Fragment {
         binding = FragmentAgregarInmuebleBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        vm.getErrorDireccion().observe(getViewLifecycleOwner(), error -> {
+            binding.tilDireccion.setError(error);
+        });
+        vm.getErrorAmbientes().observe(getViewLifecycleOwner(), error -> {
+            binding.tilAmbientes.setError(error);
+        });
+        vm.getErrorUso().observe(getViewLifecycleOwner(), error -> {
+            binding.tilUso.setError(error);
+        });
+        vm.getErrorTipo().observe(getViewLifecycleOwner(), error -> {
+            binding.tilTipo.setError(error);
+        });
+        vm.getErrorSuperficie().observe(getViewLifecycleOwner(), error -> {
+            binding.tilSuperficie.setError(error);
+        });
+        vm.getErrorValor().observe(getViewLifecycleOwner(), error -> {
+            binding.tilValor.setError(error);
+        });
+        //TODO --> faltan los errores de lat y long
+
 
 
         binding.btnGuardarInmueble.setOnClickListener(v -> {

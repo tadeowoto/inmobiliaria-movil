@@ -52,8 +52,6 @@ public class InmuebleAdapter extends RecyclerView.Adapter<InmuebleAdapter.ViewHo
         holder.btnVer.setOnClickListener(v -> {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("inmueble", ia);
-                //Navigation.findNavController((Activity) v.getContext(), R.id.nav_host_fragment_content_menu).navigate(R.id.action_inmueblesFragment_to_detalleInmuebleFragment, bundle);
-            // Se puede hacer un callback como interfaz, PREGUNTAR AL PROFE
                 Navigation.findNavController(v)
                     .navigate(R.id.action_inmueblesFragment_to_detalleInmuebleFragment, bundle);
 
