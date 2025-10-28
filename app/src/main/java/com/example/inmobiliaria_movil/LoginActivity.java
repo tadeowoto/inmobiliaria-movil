@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
         vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginActivityViewModel.class);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
-
+        setContentView(binding.getRoot());
         binding.btnLogin.setOnClickListener(v -> {
             String usuario = binding.etUsuario.getText().toString();
             String password = binding.etPassword.getText().toString();
