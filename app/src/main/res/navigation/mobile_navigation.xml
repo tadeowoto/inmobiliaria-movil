@@ -105,8 +105,8 @@
     </fragment>
     <fragment
         android:id="@+id/detalleInquilinoFragment"
+        android:label="Detalle del Inquilino"
         android:name="com.example.inmobiliaria_movil.inmobiliariaApp.ui.inquilinos.detalleInquilino.DetalleInquilinoFragment"
-        android:label="fragment_detalle_inquilino"
         tools:layout="@layout/fragment_detalle_inquilino" >
         <action
             android:id="@+id/action_detalleInquilinoFragment_to_inquilinosFragment"

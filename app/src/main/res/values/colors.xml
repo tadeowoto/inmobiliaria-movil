@@ -4,7 +4,7 @@
     <color name="colorPrimary">#6C63FF</color>
     <color name="colorPrimaryDark">#564ecf</color>
     <color name="colorSecondary">#A593FF</color>
-    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorBackground">#F5F5F5</color>
 
     <color name="colorTextPrimary">#212121</color>
     <color name="colorTextSecondary">#757575</color>

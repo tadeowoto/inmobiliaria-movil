@@ -6,10 +6,8 @@
     android:id="@+id/inmueblesContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface"
+    android:background="#F5F5F5"
     tools:context=".inmobiliariaApp.ui.inmuebles.InmueblesFragment">
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lista"
         android:layout_width="match_parent"
@@ -24,13 +22,16 @@
         android:id="@+id/btnAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/agregar_inmueble"
-        android:layout_margin="16dp"
         android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
         android:contentDescription="@string/agregar_inmueble"
+        android:text="@string/agregar_inmueble"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/colorPrimary"
+        app:hideMotionSpec="@android:integer/config_mediumAnimTime"
         app:icon="@drawable/ic_add_24"
-        app:iconTint="?attr/colorOnPrimary"
-        app:backgroundTint="?attr/colorPrimary" />
+        app:iconTint="@color/white"
+        app:showMotionSpec="@android:integer/config_mediumAnimTime" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

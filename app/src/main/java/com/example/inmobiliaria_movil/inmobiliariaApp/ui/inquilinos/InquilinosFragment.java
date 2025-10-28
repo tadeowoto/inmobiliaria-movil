@@ -40,7 +40,7 @@ public class InquilinosFragment extends Fragment {
                 Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_menu).navigate(R.id.action_inquilinosFragment_to_detalleInquilinoFragment, bundle);
             });
 
-            GridLayoutManager glm = new GridLayoutManager(getContext(), 2);
+            GridLayoutManager glm = new GridLayoutManager(getContext(), 1);
             binding.lista.setLayoutManager(glm);
             binding.lista.setAdapter(ia);
 
