@@ -1,11 +1,21 @@
 package com.example.inmobiliaria_movil;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.inmobiliaria_movil.databinding.ActivityLoginBinding;
@@ -23,9 +33,6 @@ public class LoginActivity extends AppCompatActivity {
 
         vm = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(LoginActivityViewModel.class);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
-
-
-        setContentView(binding.getRoot());
 
         binding.btnLogin.setOnClickListener(v -> {
             String usuario = binding.etUsuario.getText().toString();
@@ -54,7 +61,17 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        vm.activarLecturas();
 
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }

@@ -1,7 +1,15 @@
 package com.example.inmobiliaria_movil;
 
+import static android.content.Context.SENSOR_SERVICE;
+
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.net.Uri;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,11 +32,16 @@ public class LoginActivityViewModel extends AndroidViewModel {
 
     private MutableLiveData<Boolean> mEstaCargando = new MutableLiveData<>();
 
+    private SensorManager manager;
+    private Sensor acelerometro;
+    private ManejadorSensores manejador;
+
+    private static final float SENSIBILIDAD = 10;
+    private long ultimoUpdate = 0;
+
+
     private Context context;
 
-
-
-;
     public LoginActivityViewModel(@NonNull Application application) {
         super(application);
         context = getApplication();
@@ -37,6 +50,7 @@ public class LoginActivityViewModel extends AndroidViewModel {
     public LiveData<String> getErrorNombre() {
         return mErrorNombre;
     }
+
     public LiveData<String> getErrorPassword() {
         return mErrorPassword;
     }
@@ -48,9 +62,6 @@ public class LoginActivityViewModel extends AndroidViewModel {
     public LiveData<Boolean> getLoginExitoso() {
         return mLoginExitoso;
     }
-
-
-
 
 
     public void validarUsuario(String usuario, String password) {
@@ -103,4 +114,53 @@ public class LoginActivityViewModel extends AndroidViewModel {
         }
     }
 
+    public void activarLecturas() {
+        manager = (SensorManager) getApplication().getSystemService(SENSOR_SERVICE);
+        acelerometro = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        manejador = new ManejadorSensores();
+
+        if (acelerometro == null) {
+            Toast.makeText(context, "El dispositivo no tiene sensor de aceleración", Toast.LENGTH_SHORT).show();
+        } else {
+            manager.registerListener(manejador, acelerometro, SensorManager.SENSOR_DELAY_NORMAL);
+        }
+    }
+
+    public void desactivarLecturas() {
+        if (acelerometro != null && manejador != null) {
+            manager.unregisterListener(manejador);
+        }
+    }
+
+    class ManejadorSensores implements SensorEventListener {
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        }
+
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                float x = event.values[0];
+                float y = event.values[1];
+                float z = event.values[2];
+
+                double acceleration = Math.sqrt(x * x + y * y + z * z) - SensorManager.GRAVITY_EARTH;
+
+                long currentTime = System.currentTimeMillis();
+                if (acceleration > SENSIBILIDAD && (currentTime - SENSIBILIDAD) > 1500) {
+                    ultimoUpdate = currentTime;
+                    realizarLlamada();
+                }
+            }
+        }
+
+
+    }
+
+    private void realizarLlamada() {
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:123456789"));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplication().startActivity(intent);
+    }
 }
